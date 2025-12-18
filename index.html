@@ -1,255 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chick'n Nugget | FamFav Games</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chick'n Nugget | FamFav Games</title>
 
-  <style>
-    /* RESET */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+<style>
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  color: #222;
+  overflow-x: hidden;
+}
 
-    body {
-      background: #ffffff;
-      color: #222;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+/* BUTTONS */
+.btn {
+  padding: 14px 26px;
+  border-radius: 30px;
+  font-weight: 700;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform .2s ease;
+}
+.btn:hover { transform: translateY(-2px); }
 
-    a { text-decoration: none; color: inherit; }
+.btn-white {
+  background: #fff;
+  border: 2px solid #ddd;
+}
+.btn-purple {
+  background: #6a1b9a;
+  color: #fff;
+}
 
-    /* BUTTONS */
-    .btn {
-      padding: 14px 26px;
-      border-radius: 30px;
-      font-weight: 700;
-      display: inline-block;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
+/* FLOATING PNG CARDS */
+.side-cards {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  z-index: 1;
+}
+.side-cards.left { left: 20px; }
+.side-cards.right { right: 20px; }
 
-    .btn:hover { transform: translateY(-2px); }
+.side-cards img {
+  width: 160px;
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 15px 25px rgba(0,0,0,.25));
+}
 
-    .btn-white {
-      background: #ffffff;
-      color: #222;
-      border: 2px solid #ddd;
-    }
+.side-cards img:nth-child(2) { animation-delay: 2s; }
 
-    .btn-purple {
-      background: #6a1b9a;
-      color: #ffffff;
-    }
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+  100% { transform: translateY(0); }
+}
 
-    /* FLOATING CARDS */
-    .side-cards {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
+/* HERO */
+.hero {
+  background: #ffd400;
+  padding: 140px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
 
-    .side-cards.left { left: -40px; }
-    .side-cards.right { right: -40px; }
+.presented-by {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
 
-    .floating-card {
-      width: 180px;
-      animation: float 6s ease-in-out infinite;
-      filter: drop-shadow(0 15px 25px rgba(0,0,0,0.25));
-    }
+.hero-card {
+  background: #fff;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 70px 40px;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.15);
+}
 
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-18px); }
-      100% { transform: translateY(0); }
-    }
+.hero-card h1 {
+  font-size: 56px;
+  margin-bottom: 15px;
+}
 
-    /* HERO */
-    .hero {
-      background: #ffd400;
-      padding: 140px 20px;
-      text-align: center;
-      position: relative;
-    }
+.hero-card p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
 
-    .presented-by {
-      font-size: 14px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
 
-    .hero-card {
-      background: #ffffff;
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 70px 40px;
-      border-radius: 24px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-      position: relative;
-      z-index: 2;
-    }
+/* SECTIONS */
+section {
+  padding: 110px 20px;
+  position: relative;
+  z-index: 2;
+}
 
-    .hero-card h1 {
-      font-size: 56px;
-      margin-bottom: 20px;
-    }
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
 
-    .hero-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
+h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
 
-    /* SECTIONS */
-    section {
-      padding: 110px 20px;
-      position: relative;
-    }
+.about p {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  font-size: 18px;
+}
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
+/* ABOUT BUTTONS */
+.about-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
 
-    h2 {
-      font-size: 40px;
-      margin-bottom: 20px;
-    }
+/* HOW TO PLAY */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
 
-    /* ABOUT BUTTONS */
-    .about-buttons {
-      margin-top: 40px;
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
+.step {
+  background: #f9f9f9;
+  padding: 30px 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+}
 
-    /* HOW TO PLAY */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
-    }
+.step-number {
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  background: #ff6a00;
+  color: #fff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .step {
-      background: #f9f9f9;
-      padding: 30px 20px;
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    }
+/* NEWSLETTER */
+.newsletter {
+  background: #f4f4f4;
+  padding: 90px 20px;
+  text-align: center;
+}
 
-    .step-number {
-      width: 42px;
-      height: 42px;
-      margin: 0 auto 15px;
-      border-radius: 50%;
-      background: #ff6a00;
-      color: #fff;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.newsletter input {
+  padding: 14px;
+  width: 260px;
+  border-radius: 30px;
+  border: 2px solid #ccc;
+  margin-right: 10px;
+}
 
-    /* NEWSLETTER */
-    .newsletter {
-      background: #f4f4f4;
-      padding: 90px 20px;
-      text-align: center;
-    }
+/* FOOTER */
+footer {
+  background: #222;
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
 
-    .newsletter input {
-      padding: 14px;
-      width: 260px;
-      border-radius: 30px;
-      border: 2px solid #ccc;
-      margin-right: 10px;
-    }
+footer p {
+  max-width: 650px;
+  margin: 10px auto;
+  font-size: 14px;
+  color: #ddd;
+}
 
-    /* FOOTER */
-    footer {
-      background: #222;
-      color: #fff;
-      padding: 60px 20px;
-      text-align: center;
-    }
+/* MODALS */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
 
-    footer p {
-      max-width: 620px;
-      margin: 10px auto;
-      font-size: 14px;
-      color: #ddd;
-    }
+.modal {
+  background: #fff;
+  max-width: 500px;
+  padding: 40px;
+  border-radius: 20px;
+  animation: fadeIn .35s ease forwards;
+}
 
-    /* MODAL */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.65);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(.95); }
+  to { opacity: 1; transform: scale(1); }
+}
 
-    .modal {
-      background: #fff;
-      max-width: 500px;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-      animation: modalFade 0.4s ease forwards;
-    }
+.modal h3 { margin-bottom: 15px; }
 
-    @keyframes modalFade {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .modal h3 {
-      margin-bottom: 15px;
-      font-size: 24px;
-    }
-
-    .close-btn {
-      margin-top: 25px;
-    }
-
-    /* MOBILE */
-    @media (max-width: 900px) {
-      .side-cards { display: none; }
-      .hero-card h1 { font-size: 42px; }
-      h2 { font-size: 32px; }
-    }
-  </style>
+@media (max-width: 900px) {
+  .side-cards { display: none; }
+  .hero-card h1 { font-size: 42px; }
+  h2 { font-size: 32px; }
+}
+</style>
 </head>
 
 <body>
+
+<!-- FLOATING PNGs -->
+<div class="side-cards left">
+  <img src="card-left-1.png" alt="Game Card">
+  <img src="card-left-2.png" alt="Game Card">
+</div>
+
+<div class="side-cards right">
+  <img src="card-right-1.png" alt="Game Card">
+  <img src="card-right-2.png" alt="Game Card">
+</div>
 
 <!-- HERO -->
 <section class="hero">
   <p class="presented-by">FamFav Games Presents</p>
   <div class="hero-card">
     <h1>Chick'n Nugget</h1>
-    <p>Our first family-friendly card game — built for laughs, strategy, and unforgettable game nights.</p>
+    <p>A fun, exciting new tabletop experience — launching soon on Kickstarter!</p>
     <div class="hero-buttons">
       <a href="#how-to-play" class="btn btn-white">How to Play</a>
       <a href="https://forms.gle/YOUR_GOOGLE_FORM" class="btn btn-purple" target="_blank">Take the Survey</a>
@@ -260,13 +260,14 @@
 <!-- ABOUT -->
 <section class="about">
   <div class="container">
-    <h2>About the Game</h2>
-    <p>Chick'n Nugget was created by families, for families — simple to learn and impossible not to laugh.</p>
+    <h2>About FamFav Games</h2>
+    <p>Fun, strategic and full of surprises — this game was created by kids (along with their parents).</p>
+    <p>Our mission is to create fun and interactive games for people of all ages to enjoy.</p>
 
     <div class="about-buttons">
-      <button class="btn btn-white" onclick="openModal('modal1')">The Story</button>
-      <button class="btn btn-white" onclick="openModal('modal2')">Why We Made It</button>
-      <button class="btn btn-white" onclick="openModal('modal3')">Who It's For</button>
+      <button class="btn btn-white" onclick="openModal('m1')">The Story</button>
+      <button class="btn btn-white" onclick="openModal('m2')">Why We Made It</button>
+      <button class="btn btn-white" onclick="openModal('m3')">Who It's For</button>
     </div>
   </div>
 </section>
@@ -285,8 +286,8 @@
 
 <!-- NEWSLETTER -->
 <section class="newsletter">
-  <h2>Join the FamFav Newsletter</h2>
-  <p>Be the first to hear about new games and releases.</p><br>
+  <h2>Subscribe to Our Newsletter</h2>
+  <p>Get updates on Chick'n Nugget and future FamFav games.</p><br>
   <input type="email" placeholder="Your email">
   <a class="btn btn-purple">Subscribe</a>
 </section>
@@ -299,40 +300,39 @@
 </footer>
 
 <!-- MODALS -->
-<div class="modal-overlay" id="modal1" onclick="closeModal(event)">
+<div class="modal-overlay" id="m1" onclick="closeModal(event)">
   <div class="modal">
     <h3>The Story</h3>
-    <p>Chick'n Nugget began as a family joke that turned into a real game.</p>
-    <button class="btn btn-purple close-btn" onclick="closeModal()">Close</button>
+    <p>This game started around the table with kids and parents playing together.</p>
+    <button class="btn btn-purple" onclick="closeModal()">Close</button>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal2" onclick="closeModal(event)">
+<div class="modal-overlay" id="m2" onclick="closeModal(event)">
   <div class="modal">
     <h3>Why We Made It</h3>
-    <p>We wanted a game that kids, parents, and grandparents all enjoy together.</p>
-    <button class="btn btn-purple close-btn" onclick="closeModal()">Close</button>
+    <p>We wanted a game that brings families together and is easy to learn.</p>
+    <button class="btn btn-purple" onclick="closeModal()">Close</button>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal3" onclick="closeModal(event)">
+<div class="modal-overlay" id="m3" onclick="closeModal(event)">
   <div class="modal">
     <h3>Who It's For</h3>
-    <p>Perfect for families, game nights, classrooms, and parties.</p>
-    <button class="btn btn-purple close-btn" onclick="closeModal()">Close</button>
+    <p>Perfect for families, classrooms, parties, and game nights.</p>
+    <button class="btn btn-purple" onclick="closeModal()">Close</button>
   </div>
 </div>
 
 <script>
-  function openModal(id) {
-    document.getElementById(id).style.display = 'flex';
+function openModal(id) {
+  document.getElementById(id).style.display = 'flex';
+}
+function closeModal(e) {
+  if (!e || e.target.classList.contains('modal-overlay')) {
+    document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = 'none');
   }
-
-  function closeModal(e) {
-    if (!e || e.target.classList.contains('modal-overlay')) {
-      document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = 'none');
-    }
-  }
+}
 </script>
 
 </body>
