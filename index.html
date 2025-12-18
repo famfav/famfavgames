@@ -241,6 +241,107 @@ h2 {
   border: none;
   cursor: pointer;
 }
+/* ===============================
+   NEWSLETTER / MAILCHIMP SIGNUP
+================================ */
+
+#subscribe {
+  background: #f4f4f4;
+  padding: 90px 20px;
+}
+
+#mc_embed_signup {
+  max-width: 520px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 50px 40px;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+  text-align: center;
+}
+
+/* Headline */
+#mc_embed_signup h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+/* Subtext */
+#mc_embed_signup p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* Email Input */
+#mc_embed_signup input[type="email"] {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 16px;
+  border-radius: 30px;
+  border: 2px solid #ddd;
+  margin-bottom: 18px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#mc_embed_signup input[type="email"]:focus {
+  border-color: #6a1b9a;
+  box-shadow: 0 0 0 3px rgba(106,27,154,0.15);
+}
+
+/* Submit Button */
+#mc_embed_signup button,
+#mc_embed_signup input[type="submit"] {
+  background: #6a1b9a;
+  color: #ffffff;
+  border: none;
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#mc_embed_signup button:hover,
+#mc_embed_signup input[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(106,27,154,0.35);
+}
+
+/* Success & Error Messages */
+#mc_embed_signup .response {
+  font-size: 14px;
+  margin-top: 16px;
+  padding: 10px;
+}
+
+#mc_embed_signup #mce-success-response {
+  color: #2e7d32;
+}
+
+#mc_embed_signup #mce-error-response {
+  color: #c62828;
+}
+
+/* Hide Mailchimp branding if present */
+#mc_embed_signup .refferal_badge,
+#mc_embed_signup .indicates-required {
+  display: none;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+  #mc_embed_signup {
+    padding: 40px 25px;
+  }
+
+  #mc_embed_signup h2 {
+    font-size: 26px;
+  }
+}
 
 /* FOOTER */
 footer {
