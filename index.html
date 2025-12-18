@@ -214,6 +214,29 @@ h2 {
   border: 2px solid #ccc;
   margin-right: 10px;
 }
+.newsletter form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.newsletter input {
+  padding: 14px;
+  border-radius: 30px;
+  border: 2px solid #ccc;
+  width: 260px;
+}
+
+.newsletter button {
+  padding: 14px 26px;
+  border-radius: 30px;
+  font-weight: 700;
+  background: #6a1b9a;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
 
 /* FOOTER */
 footer {
@@ -326,13 +349,19 @@ footer p {
   </div>
 </section>
 
-<!-- NEWSLETTER -->
+
+  <!-- NEWSLETTER -->
 <section class="newsletter">
   <h2>Subscribe to Our Newsletter</h2>
   <p>Get updates on Chick'n Nugget and future FamFav games.</p><br>
-  <input type="email" placeholder="Your email">
-  <a class="btn btn-purple">Subscribe</a>
+
+  <!-- Mailchimp Form -->
+  <form action="YOUR_MAILCHIMP_FORM_ACTION_URL" method="post" target="_blank">
+    <input type="email" name="EMAIL" placeholder="Your email" required>
+    <button type="submit" class="btn btn-purple">Subscribe</button>
+  </form>
 </section>
+
 
 <!-- FOOTER -->
 <footer>
