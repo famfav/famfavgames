@@ -1,339 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chick'n Nugget | FamFav Games</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chick'n Nugget | FamFav Games</title>
 
-<style>
-/* RESET */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@600&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #fff;
-  color: #222;
-  overflow-x: hidden;
-}
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-pVPLg7NqM6/9SzRe4hZ+2D9pxdRbf1r2F4P0ZUXj0Xv0VFXBghJH1U6O7Ycw6BLfq3bS9u4kZ5k3o+kxg5JXiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-/* BUTTONS */
-.btn {
-  padding: 14px 26px;
-  border-radius: 30px;
-  font-weight: 700;
-  display: inline-block;
-  cursor: pointer;
-  transition: transform .2s ease;
-}
-.btn:hover { transform: translateY(-2px); }
+  <style>
+    /* RESET */
+    * { margin:0; padding:0; box-sizing:border-box; font-family: Inter, sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background: #fff; color: #222; line-height:1.6; }
+    a { text-decoration: none; color: inherit; }
 
-.btn-white {
-  background: #fff;
-  border: 2px solid #ddd;
-}
-.btn-purple {
-  background: #6a1b9a;
-  color: #fff;
-}
+    /* HEADER */
+    header { position: fixed; top:0; width:100%; padding:20px 0; z-index:10; display:flex; justify-content:center; transition: background 0.4s; background:transparent;}
+    header.scrolled { background: rgba(255,255,255,0.95); box-shadow:0 4px 20px rgba(0,0,0,0.08);}
+    .header-inner { width:100%; max-width:1400px; display:flex; justify-content:space-between; align-items:center; padding:0 24px;}
+    .logo { display:flex; flex-direction:column; align-items:center; cursor:pointer; }
+    .logo-top { font-family: Gluten, cursive; font-size:36px; }
+    .logo-bottom { font-size:13px; letter-spacing:1px; margin-top:-5px; text-transform:uppercase; font-weight:800; }
+    .header-btn { background:#ff6a00; padding:10px 22px; border-radius:40px; color:white; font-weight:600; }
+    .header-btn:hover { opacity:0.8; }
 
-/* FLOATING PNG CARDS */
-.side-cards {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  z-index: 1;
-}
-.side-cards.left { left: 20px; }
-.side-cards.right { right: 20px; }
+    /* HERO */
+    .hero { background:#ffd400; padding:140px 20px 60px; text-align:center; position:relative; overflow:hidden; }
+    .presented-by { font-size:14px; letter-spacing:2px; text-transform:uppercase; margin-bottom:20px; }
+    .hero-card { background:#fff; max-width:760px; margin:0 auto; padding:70px 40px; border-radius:24px; box-shadow:0 20px 60px rgba(0,0,0,0.15); position:relative; z-index:2;}
+    .hero-card h1 { font-size:56px; margin-bottom:20px; }
+    .hero-card p { font-size:20px; margin-bottom:40px; color:#444; }
+    .hero-buttons { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+    .btn { padding:14px 26px; border-radius:30px; font-weight:700; display:inline-block; transition: transform 0.2s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-white { background:#fff; color:#222; border:2px solid #ddd; }
+    .btn-purple { background:#6a1b9a; color:#fff; }
 
-.side-cards img {
-  width: 160px;
-  animation: float 6s ease-in-out infinite;
-  filter: drop-shadow(0 15px 25px rgba(0,0,0,.25));
-}
+    /* Hero Feature Icons */
+    .hero-features { display:flex; justify-content:center; gap:50px; margin-top:40px; flex-wrap:wrap;}
+    .hero-features .feature { display:flex; flex-direction:column; align-items:center; font-weight:600; color:#222; }
+    .hero-features .feature i { margin-bottom:10px; color:#ff6a00; }
 
-.side-cards img:nth-child(2) { animation-delay: 2s; }
+    /* Floating PNGs */
+    .floating-png { position:absolute; width:120px; animation: float 6s ease-in-out infinite; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.25)); z-index:1; }
+    .floating-left { left:10%; top:50px; }
+    .floating-right { right:10%; top:80px; }
+    @keyframes float { 0%{transform:translateY(0);} 50%{transform:translateY(-20px);} 100%{transform:translateY(0);} }
 
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-18px); }
-  100% { transform: translateY(0); }
-}
+    /* ABOUT */
+    .about { padding:100px 20px; background:#f3f3f3; position:relative; }
+    .about h2 { font-size:40px; margin-bottom:20px; }
+    .about p { max-width:720px; margin:0 auto 30px auto; font-size:18px; }
+    .popup-buttons { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:30px; }
+    .popup-btn { padding:12px 24px; border-radius:30px; background:#6a1b9a; color:#fff; cursor:pointer; font-weight:600; transition:0.3s; }
+    .popup-btn:hover { opacity:0.8; }
+    .popup { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:#fff; padding:40px; border-radius:20px; max-width:500px; box-shadow:0 10px 40px rgba(0,0,0,0.3); opacity:0; transition:opacity 0.5s ease; z-index:1000; }
+    .popup.active { display:block; opacity:1; }
 
-/* HERO */
-.hero {
-  background: #ffd400;
-  padding: 140px 20px;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
+    /* NEWSLETTER */
+    .newsletter { background:#f4f4f4; padding:80px 20px; text-align:center; }
+    .newsletter input { padding:14px; width:260px; border-radius:30px; border:2px solid #ccc; margin-right:10px; }
+    .newsletter button { padding:14px 26px; border-radius:30px; background:#ff6a00; color:#fff; border:none; cursor:pointer; font-weight:600; }
 
-.presented-by {
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
+    /* FOOTER */
+    footer { background:#222; color:#fff; padding:50px 20px; text-align:center; }
+    footer p { max-width:600px; margin:10px auto; font-size:14px; color:#ddd; }
 
-.hero-card {
-  background: #fff;
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 70px 40px;
-  border-radius: 24px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.15);
-}
-
-.hero-card h1 {
-  font-size: 56px;
-  margin-bottom: 15px;
-}
-
-.hero-card p {
-  font-size: 20px;
-  margin-bottom: 30px;
-}
-
-.hero-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-/* SECTIONS */
-section {
-  padding: 110px 20px;
-  position: relative;
-  z-index: 2;
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-h2 {
-  font-size: 40px;
-  margin-bottom: 20px;
-}
-
-.about p {
-  max-width: 800px;
-  margin: 0 auto 20px;
-  font-size: 18px;
-}
-
-/* ABOUT BUTTONS */
-.about-buttons {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-/* HOW TO PLAY */
-.steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-  gap: 30px;
-  margin-top: 50px;
-}
-
-.step {
-  background: #f9f9f9;
-  padding: 30px 20px;
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0,0,0,.08);
-}
-
-.step-number {
-  width: 42px;
-  height: 42px;
-  margin: 0 auto 15px;
-  border-radius: 50%;
-  background: #ff6a00;
-  color: #fff;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* NEWSLETTER */
-.newsletter {
-  background: #f4f4f4;
-  padding: 90px 20px;
-  text-align: center;
-}
-
-.newsletter input {
-  padding: 14px;
-  width: 260px;
-  border-radius: 30px;
-  border: 2px solid #ccc;
-  margin-right: 10px;
-}
-
-/* FOOTER */
-footer {
-  background: #222;
-  color: #fff;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-footer p {
-  max-width: 650px;
-  margin: 10px auto;
-  font-size: 14px;
-  color: #ddd;
-}
-
-/* MODALS */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.65);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.modal {
-  background: #fff;
-  max-width: 500px;
-  padding: 40px;
-  border-radius: 20px;
-  animation: fadeIn .35s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.modal h3 { margin-bottom: 15px; }
-
-@media (max-width: 900px) {
-  .side-cards { display: none; }
-  .hero-card h1 { font-size: 42px; }
-  h2 { font-size: 32px; }
-}
-</style>
+    /* RESPONSIVE */
+    @media (max-width:768px){ .hero-card h1{font-size:40px;} h2{font-size:32px;} .hero-features{gap:30px;} }
+  </style>
 </head>
 
 <body>
 
-<!-- FLOATING PNGs -->
-<div class="side-cards left">
-  <img src="card-left-1.png" alt="Game Card">
-  <img src="card-left-2.png" alt="Game Card">
-</div>
-
-<div class="side-cards right">
-  <img src="card-right-1.png" alt="Game Card">
-  <img src="card-right-2.png" alt="Game Card">
-</div>
-
-<!-- HERO -->
-<section class="hero">
-  <p class="presented-by">FamFav Games Presents</p>
-  <div class="hero-card">
-    <h1>Chick'n Nugget</h1>
-    <p>A fun, exciting new tabletop experience — launching soon on Kickstarter!</p>
-    <div class="hero-buttons">
-      <a href="#how-to-play" class="btn btn-white">How to Play</a>
-      <a href="https://forms.gle/YOUR_GOOGLE_FORM" class="btn btn-purple" target="_blank">Take the Survey</a>
+  <!-- HEADER -->
+  <header id="header">
+    <div class="header-inner">
+      <div class="logo" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        <div class="logo-top">FamFav</div>
+        <div class="logo-bottom">- GAMES -</div>
+      </div>
+      <a href="https://mailchi.mp/07d059bb9a98/famfav-chicknnugget" class="header-btn">Subscribe Today!</a>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- ABOUT -->
-<section class="about">
-  <div class="container">
-    <h2>About FamFav Games</h2>
-    <p>Fun, strategic and full of surprises — this game was created by kids (along with their parents).</p>
-    <p>Our mission is to create fun and interactive games for people of all ages to enjoy.</p>
+  <!-- HERO -->
+  <section class="hero">
+    <p class="presented-by">FamFav Games Presents</p>
+    <div class="hero-card">
+      <h1>Chick'n Nugget</h1>
+      <p>Our first family-friendly card game — built for laughs, strategy, and unforgettable game nights.</p>
+      <div class="hero-buttons">
+        <a href="#how-to-play" class="btn btn-white">How to Play</a>
+        <a href="https://forms.gle/YOUR_GOOGLE_FORM" target="_blank" class="btn btn-purple">Take the Survey</a>
+      </div>
 
-    <div class="about-buttons">
-      <button class="btn btn-white" onclick="openModal('m1')">The Story</button>
-      <button class="btn btn-white" onclick="openModal('m2')">Why We Made It</button>
-      <button class="btn btn-white" onclick="openModal('m3')">Who It's For</button>
+      <!-- Feature Row -->
+      <div class="hero-features">
+        <div class="feature"><i class="fa-solid fa-child fa-2x"></i><p>Ages 5+</p></div>
+        <div class="feature"><i class="fa-solid fa-users fa-2x"></i><p>2-8 Players</p></div>
+        <div class="feature"><i class="fa-solid fa-clock fa-2x"></i><p>15-30 Minutes</p></div>
+      </div>
     </div>
-  </div>
-</section>
 
-<!-- HOW TO PLAY -->
-<section id="how-to-play">
-  <div class="container">
-    <h2>How to Play</h2>
-    <div class="steps">
-      <div class="step"><div class="step-number">1</div><h3>Deal Cards</h3></div>
-      <div class="step"><div class="step-number">2</div><h3>Play Strategically</h3></div>
-      <div class="step"><div class="step-number">3</div><h3>Win the Round</h3></div>
+    <!-- Floating PNGs -->
+    <img src="card1.png" class="floating-png floating-left" alt="Card PNG">
+    <img src="card2.png" class="floating-png floating-right" alt="Card PNG">
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <h2>About the Game</h2>
+    <p>Chick'n Nugget started as a simple idea around a kitchen table — a game created by kids and parents together.</p>
+
+    <!-- Pop-up buttons -->
+    <div class="popup-buttons">
+      <div class="popup-btn" onclick="openPopup(1)">Story</div>
+      <div class="popup-btn" onclick="openPopup(2)">Rules</div>
+      <div class="popup-btn" onclick="openPopup(3)">Fun Fact</div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- NEWSLETTER -->
-<section class="newsletter">
-  <h2>Subscribe to Our Newsletter</h2>
-  <p>Get updates on Chick'n Nugget and future FamFav games.</p><br>
-  <input type="email" placeholder="Your email">
-  <a class="btn btn-purple">Subscribe</a>
-</section>
+  <!-- POPUPS -->
+  <div class="popup" id="popup1"><h3>Story</h3><p>The idea came from a family wanting to have fun together…</p></div>
+  <div class="popup" id="popup2"><h3>Rules</h3><p>Players take turns collecting cards and creating combos…</p></div>
+  <div class="popup" id="popup3"><h3>Fun Fact</h3><p>This game was tested and improved by kids of all ages!</p></div>
 
-<!-- FOOTER -->
-<footer>
-  <p><strong>FamFav’s Mission</strong></p>
-  <p>To create family favourite games for people of all ages to enjoy!</p>
-  <p>© 2025 FamFav Games</p>
-</footer>
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <h2>Subscribe to our Newsletter</h2>
+    <input type="email" placeholder="Enter your email" id="newsletter-email">
+    <button>Subscribe</button>
+  </section>
 
-<!-- MODALS -->
-<div class="modal-overlay" id="m1" onclick="closeModal(event)">
-  <div class="modal">
-    <h3>The Story</h3>
-    <p>This game started around the table with kids and parents playing together.</p>
-    <button class="btn btn-purple" onclick="closeModal()">Close</button>
-  </div>
-</div>
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 FamFav Games — All rights reserved.</p>
+    <p>Our Mission: To create family favourite games for people of all ages to enjoy!</p>
+  </footer>
 
-<div class="modal-overlay" id="m2" onclick="closeModal(event)">
-  <div class="modal">
-    <h3>Why We Made It</h3>
-    <p>We wanted a game that brings families together and is easy to learn.</p>
-    <button class="btn btn-purple" onclick="closeModal()">Close</button>
-  </div>
-</div>
+  <script>
+    // HEADER SCROLL
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => { if(window.scrollY>50) header.classList.add('scrolled'); else header.classList.remove('scrolled'); });
 
-<div class="modal-overlay" id="m3" onclick="closeModal(event)">
-  <div class="modal">
-    <h3>Who It's For</h3>
-    <p>Perfect for families, classrooms, parties, and game nights.</p>
-    <button class="btn btn-purple" onclick="closeModal()">Close</button>
-  </div>
-</div>
-
-<script>
-function openModal(id) {
-  document.getElementById(id).style.display = 'flex';
-}
-function closeModal(e) {
-  if (!e || e.target.classList.contains('modal-overlay')) {
-    document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = 'none');
-  }
-}
-</script>
-
+    // POPUPS
+    const popups = [document.getElementById('popup1'), document.getElementById('popup2'), document.getElementById('popup3')];
+    function openPopup(n){ popups.forEach(p=>p.classList.remove('active')); popups[n-1].classList.add('active'); }
+    popups.forEach(p=>p.addEventListener('click',()=>p.classList.remove('active')));
+  </script>
 </body>
 </html>
