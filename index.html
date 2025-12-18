@@ -25,10 +25,7 @@
       overflow-x: hidden;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    a { text-decoration: none; color: inherit; }
 
     /* BUTTONS */
     .btn {
@@ -36,12 +33,11 @@
       border-radius: 30px;
       font-weight: 700;
       display: inline-block;
+      cursor: pointer;
       transition: transform 0.2s ease;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-    }
+    .btn:hover { transform: translateY(-2px); }
 
     .btn-white {
       background: #ffffff;
@@ -64,22 +60,13 @@
       gap: 30px;
     }
 
-    .side-cards.left {
-      left: -40px;
-    }
-
-    .side-cards.right {
-      right: -40px;
-    }
+    .side-cards.left { left: -40px; }
+    .side-cards.right { right: -40px; }
 
     .floating-card {
       width: 180px;
       animation: float 6s ease-in-out infinite;
       filter: drop-shadow(0 15px 25px rgba(0,0,0,0.25));
-    }
-
-    .floating-card:nth-child(2) {
-      animation-delay: 1.5s;
     }
 
     @keyframes float {
@@ -119,12 +106,6 @@
       margin-bottom: 20px;
     }
 
-    .hero-card p {
-      font-size: 20px;
-      margin-bottom: 40px;
-      color: #444;
-    }
-
     .hero-buttons {
       display: flex;
       justify-content: center;
@@ -151,11 +132,13 @@
       margin-bottom: 20px;
     }
 
-    /* ABOUT */
-    .about p {
-      max-width: 720px;
-      margin: 0 auto 30px auto;
-      font-size: 18px;
+    /* ABOUT BUTTONS */
+    .about-buttons {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
     /* HOW TO PLAY */
@@ -176,7 +159,7 @@
     .step-number {
       width: 42px;
       height: 42px;
-      margin: 0 auto 15px auto;
+      margin: 0 auto 15px;
       border-radius: 50%;
       background: #ff6a00;
       color: #fff;
@@ -216,117 +199,141 @@
       color: #ddd;
     }
 
-    /* FADE IN (for popups or sections later) */
-    .fade-in {
-      animation: fadeIn 0.6s ease forwards;
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    .modal {
+      background: #fff;
+      max-width: 500px;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+      animation: modalFade 0.4s ease forwards;
+    }
+
+    @keyframes modalFade {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal h3 {
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+
+    .close-btn {
+      margin-top: 25px;
     }
 
     /* MOBILE */
     @media (max-width: 900px) {
-      .side-cards {
-        display: none;
-      }
-
-      .hero-card h1 {
-        font-size: 42px;
-      }
-
-      h2 {
-        font-size: 32px;
-      }
+      .side-cards { display: none; }
+      .hero-card h1 { font-size: 42px; }
+      h2 { font-size: 32px; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="side-cards left">
-      <img src="card1.png" class="floating-card" alt="Game Card">
-      <img src="card2.png" class="floating-card" alt="Game Card">
+<!-- HERO -->
+<section class="hero">
+  <p class="presented-by">FamFav Games Presents</p>
+  <div class="hero-card">
+    <h1>Chick'n Nugget</h1>
+    <p>Our first family-friendly card game — built for laughs, strategy, and unforgettable game nights.</p>
+    <div class="hero-buttons">
+      <a href="#how-to-play" class="btn btn-white">How to Play</a>
+      <a href="https://forms.gle/YOUR_GOOGLE_FORM" class="btn btn-purple" target="_blank">Take the Survey</a>
     </div>
+  </div>
+</section>
 
-    <div class="side-cards right">
-      <img src="card3.png" class="floating-card" alt="Game Card">
-      <img src="card1.png" class="floating-card" alt="Game Card">
+<!-- ABOUT -->
+<section class="about">
+  <div class="container">
+    <h2>About the Game</h2>
+    <p>Chick'n Nugget was created by families, for families — simple to learn and impossible not to laugh.</p>
+
+    <div class="about-buttons">
+      <button class="btn btn-white" onclick="openModal('modal1')">The Story</button>
+      <button class="btn btn-white" onclick="openModal('modal2')">Why We Made It</button>
+      <button class="btn btn-white" onclick="openModal('modal3')">Who It's For</button>
     </div>
+  </div>
+</section>
 
-    <p class="presented-by">FamFav Games Presents</p>
-
-    <div class="hero-card">
-      <h1>Chick'n Nugget</h1>
-      <p>Our first family-friendly card game — built for laughs, strategy, and unforgettable game nights.</p>
-      <div class="hero-buttons">
-        <a href="#how-to-play" class="btn btn-white">How to Play</a>
-        <a href="https://forms.gle/YOUR_GOOGLE_FORM" class="btn btn-purple" target="_blank">Take the Survey</a>
-      </div>
+<!-- HOW TO PLAY -->
+<section id="how-to-play">
+  <div class="container">
+    <h2>How to Play</h2>
+    <div class="steps">
+      <div class="step"><div class="step-number">1</div><h3>Deal Cards</h3></div>
+      <div class="step"><div class="step-number">2</div><h3>Play Strategically</h3></div>
+      <div class="step"><div class="step-number">3</div><h3>Win the Round</h3></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ABOUT -->
-  <section class="about">
-    <div class="side-cards left">
-      <img src="card2.png" class="floating-card" alt="Game Card">
-    </div>
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <h2>Join the FamFav Newsletter</h2>
+  <p>Be the first to hear about new games and releases.</p><br>
+  <input type="email" placeholder="Your email">
+  <a class="btn btn-purple">Subscribe</a>
+</section>
 
-    <div class="side-cards right">
-      <img src="card3.png" class="floating-card" alt="Game Card">
-    </div>
+<!-- FOOTER -->
+<footer>
+  <p><strong>FamFav’s Mission</strong></p>
+  <p>To create family favourite games for people of all ages to enjoy!</p>
+  <p>© 2025 FamFav Games</p>
+</footer>
 
-    <div class="container">
-      <h2>About the Game</h2>
-      <p>
-        Chick'n Nugget started as a simple idea around a kitchen table — a game created by kids and parents together.
-        It’s fast, silly, strategic, and designed to become a family favourite.
-      </p>
-    </div>
-  </section>
+<!-- MODALS -->
+<div class="modal-overlay" id="modal1" onclick="closeModal(event)">
+  <div class="modal">
+    <h3>The Story</h3>
+    <p>Chick'n Nugget began as a family joke that turned into a real game.</p>
+    <button class="btn btn-purple close-btn" onclick="closeModal()">Close</button>
+  </div>
+</div>
 
-  <!-- HOW TO PLAY -->
-  <section id="how-to-play">
-    <div class="container">
-      <h2>How to Play</h2>
-      <div class="steps">
-        <div class="step">
-          <div class="step-number">1</div>
-          <h3>Deal Cards</h3>
-          <p>Each player gets a hand of cards.</p>
-        </div>
-        <div class="step">
-          <div class="step-number">2</div>
-          <h3>Play Strategically</h3>
-          <p>Use your cards wisely to score points.</p>
-        </div>
-        <div class="step">
-          <div class="step-number">3</div>
-          <h3>Win the Round</h3>
-          <p>The best nugget strategy wins!</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="modal-overlay" id="modal2" onclick="closeModal(event)">
+  <div class="modal">
+    <h3>Why We Made It</h3>
+    <p>We wanted a game that kids, parents, and grandparents all enjoy together.</p>
+    <button class="btn btn-purple close-btn" onclick="closeModal()">Close</button>
+  </div>
+</div>
 
-  <!-- NEWSLETTER -->
-  <section class="newsletter">
-    <h2>Join the FamFav Newsletter</h2>
-    <p>Be the first to hear about new games, updates, and releases.</p>
-    <br>
-    <input type="email" placeholder="Your email address">
-    <a href="#" class="btn btn-purple">Subscribe</a>
-  </section>
+<div class="modal-overlay" id="modal3" onclick="closeModal(event)">
+  <div class="modal">
+    <h3>Who It's For</h3>
+    <p>Perfect for families, game nights, classrooms, and parties.</p>
+    <button class="btn btn-purple close-btn" onclick="closeModal()">Close</button>
+  </div>
+</div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p><strong>FamFav’s Mission</strong></p>
-    <p>To create family favourite games for people of all ages to enjoy!</p>
-    <p>© 2025 FamFav Games</p>
-  </footer>
+<script>
+  function openModal(id) {
+    document.getElementById(id).style.display = 'flex';
+  }
+
+  function closeModal(e) {
+    if (!e || e.target.classList.contains('modal-overlay')) {
+      document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = 'none');
+    }
+  }
+</script>
 
 </body>
 </html>
