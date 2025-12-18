@@ -6,7 +6,7 @@
 <title>Chick'n Nugget | FamFav Games</title>
 
 <!-- Font Awesome for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-pVPLg7NqM6/9SzRe4hZ+2D9pxdRbf1r2F4P0ZUXj0Xv0VFXBghJH1U6O7Ycw6BLfq3bS9u4kZ5k3o+kxg5JXiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 /* RESET */
@@ -58,7 +58,6 @@ body {
   animation: float 6s ease-in-out infinite;
   filter: drop-shadow(0 15px 25px rgba(0,0,0,.25));
 }
-
 .side-cards img:nth-child(2) { animation-delay: 2s; }
 
 @keyframes float {
@@ -70,7 +69,7 @@ body {
 /* HERO */
 .hero {
   background: #ffd400;
-  padding: 140px 20px;
+  padding: 140px 20px 220px; /* extra bottom padding for features */
   text-align: center;
   position: relative;
   z-index: 2;
@@ -81,6 +80,7 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 20px;
+  color: #222;
 }
 
 .hero-card {
@@ -90,6 +90,8 @@ body {
   padding: 70px 40px;
   border-radius: 24px;
   box-shadow: 0 20px 60px rgba(0,0,0,.15);
+  position: relative;
+  z-index: 3;
 }
 
 .hero-card h1 {
@@ -109,27 +111,31 @@ body {
   flex-wrap: wrap;
 }
 
-/* HERO FEATURE ROW */
+/* HERO FEATURES UNDER CARD */
 .hero-features {
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 60px;
   margin-top: 40px;
-  flex-wrap: wrap;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 40px;
+  z-index: 2;
 }
 
 .hero-features .feature {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-weight: 600;
-  color: #222;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .hero-features .feature i {
-  margin-bottom: 10px;
-  color: #ff6a00;
   font-size: 32px;
+  margin-bottom: 8px;
 }
 
 /* SECTIONS */
@@ -253,6 +259,7 @@ footer p {
   .side-cards { display: none; }
   .hero-card h1 { font-size: 42px; }
   h2 { font-size: 32px; }
+  .hero-features { flex-direction: column; gap: 20px; bottom: -20px; }
 }
 </style>
 </head>
@@ -280,23 +287,13 @@ footer p {
       <a href="#how-to-play" class="btn btn-white">How to Play</a>
       <a href="https://forms.gle/YOUR_GOOGLE_FORM" class="btn btn-purple" target="_blank">Take the Survey</a>
     </div>
+  </div>
 
-    <!-- HERO FEATURE ROW -->
-    <div class="hero-features">
-      <div class="feature">
-        <i class="fa-solid fa-child"></i>
-        <p>Ages 5+</p>
-      </div>
-      <div class="feature">
-        <i class="fa-solid fa-users"></i>
-        <p>2-8 Players</p>
-      </div>
-      <div class="feature">
-        <i class="fa-solid fa-clock"></i>
-        <p>15-30 Minutes</p>
-      </div>
-    </div>
-
+  <!-- HERO FEATURES -->
+  <div class="hero-features">
+    <div class="feature"><i class="fas fa-child"></i><p>Ages 5+</p></div>
+    <div class="feature"><i class="fas fa-users"></i><p>2-8 Players</p></div>
+    <div class="feature"><i class="fas fa-clock"></i><p>15-30 Minutes</p></div>
   </div>
 </section>
 
