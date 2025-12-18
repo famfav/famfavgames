@@ -1,301 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chick'n Nugget | FamFav Games</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chick'n Nugget | FamFav Games</title>
 
-  <style>
-    /* RESET */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+<style>
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-    body {
-      background: #ffffff;
-      color: #222;
-      line-height: 1.6;
-    }
+/* SMOOTH SCROLL */
+html {
+  scroll-behavior: smooth;
+}
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+body {
+  background: #ffffff;
+  color: #222;
+  line-height: 1.6;
+}
 
-    /* BUTTONS */
-    .btn {
-      padding: 14px 26px;
-      border-radius: 30px;
-      font-weight: 700;
-      display: inline-block;
-      transition: transform 0.2s ease;
-    }
+a { text-decoration: none; color: inherit; }
 
-    .btn:hover {
-      transform: translateY(-2px);
-    }
+/* BUTTONS */
+.btn {
+  padding: 14px 26px;
+  border-radius: 30px;
+  font-weight: 700;
+  display: inline-block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
 
-    .btn-white {
-      background: #ffffff;
-      color: #222;
-      border: 2px solid #ddd;
-    }
+.btn-white {
+  background: #ffffff;
+  color: #222;
+  border: 2px solid #ddd;
+}
 
-    .btn-purple {
-      background: #6a1b9a;
-      color: #ffffff;
-    }
+.btn-purple {
+  background: #6a1b9a;
+  color: #ffffff;
+}
 
-    /* HERO */
-    .hero {
-      background: #ffd400;
-      padding: 120px 20px;
-      text-align: center;
-    }
+/* HERO */
+.hero {
+  background: #ffd400;
+  padding: 120px 20px;
+  text-align: center;
+}
 
-    .presented-by {
-      font-size: 14px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
+.presented-by {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
 
-    .hero-card {
-      background: #ffffff;
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 70px 40px;
-      border-radius: 24px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-    }
+.hero-card {
+  background: #ffffff;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 70px 40px;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
 
-    .hero-card h1 {
-      font-size: 56px;
-      margin-bottom: 20px;
-    }
+.hero-card h1 {
+  font-size: 56px;
+  margin-bottom: 20px;
+}
 
-    .hero-card p {
-      font-size: 20px;
-      margin-bottom: 40px;
-      color: #444;
-    }
+.hero-card p {
+  font-size: 20px;
+  margin-bottom: 40px;
+  color: #444;
+}
 
-    .hero-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
 
-    /* SECTIONS */
-    section {
-      padding: 100px 20px;
-    }
+/* SECTIONS */
+section {
+  padding: 100px 20px;
+}
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      text-align: center;
-    }
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
 
-    h2 {
-      font-size: 40px;
-      margin-bottom: 20px;
-    }
+h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
 
-    /* ABOUT */
-    .about p {
-      max-width: 720px;
-      margin: 0 auto 30px auto;
-      font-size: 18px;
-    }
+/* GAME PREVIEW */
+.cards-preview {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 60px;
+  flex-wrap: wrap;
+}
 
-    /* HOW TO PLAY */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
-    }
+.floating-card {
+  width: 200px;
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 15px 25px rgba(0,0,0,0.25));
+}
 
-    .step {
-      background: #f9f9f9;
-      padding: 30px 20px;
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    }
+.floating-card:nth-child(2) { animation-delay: 1.5s; }
+.floating-card:nth-child(3) { animation-delay: 3s; }
 
-    .step-number {
-      width: 42px;
-      height: 42px;
-      margin: 0 auto 15px auto;
-      border-radius: 50%;
-      background: #ff6a00;
-      color: #fff;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
 
-    /* POPUPS */
-    .popup-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
+/* ABOUT */
+.about p {
+  max-width: 720px;
+  margin: 0 auto 30px auto;
+  font-size: 18px;
+}
 
-    .popup {
-      background: #ffffff;
-      padding: 40px;
-      max-width: 500px;
-      border-radius: 20px;
-      text-align: center;
-      position: relative;
-    }
+/* HOW TO PLAY */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
 
-    .close-btn {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 20px;
-      cursor: pointer;
-    }
+.step {
+  background: #f9f9f9;
+  padding: 30px 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
 
-    /* FOOTER */
-    footer {
-      background: #222;
-      color: #fff;
-      padding: 40px 20px;
-      text-align: center;
-    }
+.step-number {
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 15px auto;
+  border-radius: 50%;
+  background: #ff6a00;
+  color: #fff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    /* MOBILE */
-    @media (max-width: 600px) {
-      .hero-card h1 {
-        font-size: 40px;
-      }
+/* NEWSLETTER */
+.newsletter {
+  background: #f4f4f4;
+  padding: 80px 20px;
+  text-align: center;
+}
 
-      h2 {
-        font-size: 32px;
-      }
-    }
-  </style>
+.newsletter p {
+  margin-bottom: 25px;
+  font-size: 18px;
+}
+
+/* POPUP (FADE-IN READY) */
+.popup {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: popupFade 0.4s ease forwards;
+}
+
+@keyframes popupFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* FOOTER */
+footer {
+  background: #222;
+  color: #fff;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+footer p {
+  max-width: 600px;
+  margin: 10px auto;
+  font-size: 14px;
+  color: #ddd;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .hero-card h1 { font-size: 40px; }
+  h2 { font-size: 32px; }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <p class="presented-by">FamFav Games Presents</p>
-
-    <div class="hero-card">
-      <h1>Chick'n Nugget</h1>
-      <p>
-        Our first family-friendly card game — built for laughs, strategy,
-        and unforgettable game nights.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#how-to-play" class="btn btn-white">How to Play</a>
-        <a href="https://forms.gle/YOUR_GOOGLE_FORM" class="btn btn-purple" target="_blank">
-          Take the Survey
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="container">
-      <h2>About the Game</h2>
-      <p>
-        Chick'n Nugget started as a simple idea around a kitchen table —
-        a game that kids, parents, and friends could all enjoy together.
-        Easy to learn, unpredictable to play, and full of moments that
-        make everyone laugh.
-      </p>
-
-      <div class="hero-buttons">
-        <button class="btn btn-white" onclick="openPopup(1)">The Story</button>
-        <button class="btn btn-white" onclick="openPopup(2)">Placeholder</button>
-        <button class="btn btn-white" onclick="openPopup(3)">Placeholder</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW TO PLAY -->
-  <section id="how-to-play">
-    <div class="container">
-      <h2>How to Play</h2>
-
-      <div class="steps">
-        <div class="step">
-          <div class="step-number">1</div>
-          <h3>Deal the Cards</h3>
-          <p>Each player receives a hand of cards.</p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">2</div>
-          <h3>Take Turns</h3>
-          <p>Play cards strategically to block or advance.</p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">3</div>
-          <h3>Use Special Cards</h3>
-          <p>Unexpected twists keep every round fresh.</p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">4</div>
-          <h3>Win the Nugget</h3>
-          <p>Complete the objective to claim victory.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- POPUPS -->
-  <div class="popup-overlay" id="popupOverlay">
-    <div class="popup">
-      <span class="close-btn" onclick="closePopup()">✕</span>
-      <div id="popupContent"></div>
+<!-- HERO -->
+<section class="hero">
+  <p class="presented-by">FamFav Games Presents</p>
+  <div class="hero-card">
+    <h1>Chick'n Nugget</h1>
+    <p>Our first family-friendly card game — built for laughs, strategy, and unforgettable game nights.</p>
+    <div class="hero-buttons">
+      <a href="#how-to-play" class="btn btn-white">How to Play</a>
+      <a href="https://forms.gle/YOUR_GOOGLE_FORM" class="btn btn-purple" target="_blank">Take the Survey</a>
     </div>
   </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 FamFav Games — Creating games families love.</p>
-  </footer>
+<!-- GAME PREVIEW -->
+<section>
+  <div class="container">
+    <h2>Game Preview</h2>
+    <p>Here’s a sneak peek at what the Chick'n Nugget cards look like.</p>
+    <div class="cards-preview">
+      <img src="card1.png" class="floating-card" alt="Game Card">
+      <img src="card2.png" class="floating-card" alt="Game Card">
+      <img src="card3.png" class="floating-card" alt="Game Card">
+    </div>
+  </div>
+</section>
 
-  <script>
-    function openPopup(id) {
-      const content = {
-        1: "<h3>The Story</h3><p>Chick'n Nugget was created to bring families together with a game that’s simple, funny, and replayable.</p>",
-        2: "<h3>Coming Soon</h3><p>This section is reserved for future content.</p>",
-        3: "<h3>More to Come</h3><p>We’re just getting started — stay tuned!</p>"
-      };
+<!-- ABOUT -->
+<section class="about">
+  <div class="container">
+    <h2>About the Game</h2>
+    <p>
+      Chick'n Nugget started as a simple idea around a kitchen table —
+      a game created by kids and parents together, designed to bring people together.
+    </p>
+  </div>
+</section>
 
-      document.getElementById("popupContent").innerHTML = content[id];
-      document.getElementById("popupOverlay").style.display = "flex";
-    }
+<!-- HOW TO PLAY -->
+<section id="how-to-play">
+  <div class="container">
+    <h2>How to Play</h2>
+    <div class="steps">
+      <div class="step"><div class="step-number">1</div><h3>Deal Cards</h3></div>
+      <div class="step"><div class="step-number">2</div><h3>Take Turns</h3></div>
+      <div class="step"><div class="step-number">3</div><h3>Play Special Cards</h3></div>
+      <div class="step"><div class="step-number">4</div><h3>Win the Nugget</h3></div>
+    </div>
+  </div>
+</section>
 
-    function closePopup() {
-      document.getElementById("popupOverlay").style.display = "none";
-    }
-  </script>
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <h2>Stay in the Loop</h2>
+  <p>Subscribe to receive updates on Chick'n Nugget and future FamFav Games releases.</p>
+  <a href="https://mailchi.mp/07d059bb9a98/famfav-chicknnugget" class="btn btn-purple">
+    Subscribe to Newsletter
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>FamFav Games Mission</strong></p>
+  <p>To create family favourite games for people of all ages to enjoy!</p>
+  <p>© 2025 FamFav Games</p>
+</footer>
 
 </body>
 </html>
